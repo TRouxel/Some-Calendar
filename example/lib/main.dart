@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  RaisedButton(
+                  ElevatedButton(
                     child: Text("Single"),
                     onPressed: () {
                       showDialog(
@@ -106,13 +106,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                 done: (date) {
                                   setState(() {
                                     selectedDate = date;
-                                    showSnackbar(selectedDate.toString());
+                                    showSnackbar(
+                                        selectedDate.toString(), context);
                                   });
                                 },
                               ));
                     },
                   ),
-                  RaisedButton(
+                  ElevatedButton(
                     child: Text("Multi"),
                     onPressed: () {
                       showDialog(
@@ -132,13 +133,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                 done: (date) {
                                   setState(() {
                                     selectedDates = date;
-                                    showSnackbar(selectedDates.toString());
+                                    showSnackbar(
+                                        selectedDates.toString(), context);
                                   });
                                 },
                               ));
                     },
                   ),
-                  RaisedButton(
+                  ElevatedButton(
                     child: Text("Range"),
                     onPressed: () {
                       showDialog(
@@ -159,7 +161,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 done: (date) {
                                   setState(() {
                                     selectedDates = date;
-                                    showSnackbar(selectedDates.toString());
+                                    showSnackbar(
+                                        selectedDates.toString(), context);
                                   });
                                 },
                               ));
@@ -182,7 +185,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  RaisedButton(
+                  ElevatedButton(
                     child: Text("Single "),
                     onPressed: () {
                       Navigator.push(
@@ -192,7 +195,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       );
                     },
                   ),
-                  RaisedButton(
+                  ElevatedButton(
                     child: Text("Multi "),
                     onPressed: () {
                       Navigator.push(
@@ -202,7 +205,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       );
                     },
                   ),
-                  RaisedButton(
+                  ElevatedButton(
                     child: Text("Range"),
                     onPressed: () {
                       Navigator.push(
@@ -220,10 +223,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+}
 
-  void showSnackbar(String x) {
-    _scaffoldKey.currentState.showSnackBar(SnackBar(
-      content: Text(x),
-    ));
-  }
+void showSnackbar(String x, BuildContext context) {
+  ScaffoldMessenger.of(context)
+      .showSnackBar(SnackBar(content: Text(x.toString())));
 }

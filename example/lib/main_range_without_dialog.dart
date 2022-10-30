@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:some_calendar/some_calendar.dart';
 
+import 'main.dart';
+
 class MainRangeWithoutDialog extends StatefulWidget {
   @override
   _MainRangeWithoutDialogState createState() => _MainRangeWithoutDialogState();
@@ -36,7 +38,7 @@ class _MainRangeWithoutDialogState extends State<MainRangeWithoutDialog> {
                   done: (date) {
                     setState(() {
                       selectedDates = date;
-                      showSnackbar(selectedDates.toString());
+                      showSnackbar(selectedDates.toString(), context);
                     });
                   },
                 ),
@@ -46,11 +48,5 @@ class _MainRangeWithoutDialogState extends State<MainRangeWithoutDialog> {
         ),
       ),
     );
-  }
-
-  void showSnackbar(String x) {
-    _scaffoldKey.currentState.showSnackBar(SnackBar(
-      content: Text(x),
-    ));
   }
 }
